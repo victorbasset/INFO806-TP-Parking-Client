@@ -1,0 +1,97 @@
+<div [@routerTransition]>
+    <h2>Parkings</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active"><i class="fa fa-table"></i> Parkings</li>
+    </ol>
+    <a [routerLink]="['/add-parking']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+      <button type="button" class="btn btn-success" style="margin-bottom: 15px">
+          Ajouter un parking
+      </button>
+    </a>
+
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+              <div class="card-header">
+                    Tous les parkings
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Nb. de places disponibles</th>
+                            <th>Commande</th>
+                            <th>Liste des demandes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Parking du Mont Blanc</td>
+                            <td>Chez Mémé</td>
+                            <td>1</td>
+                            <td>
+                              <a [routerLink]="['/parking-spaces']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-info">
+                                      <i class="fas fa-eye"></i>
+                                </button>
+                              </a>
+                              <a [routerLink]="['/update-parking']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-warning" style="color:white;">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                              </a>
+                              <a [routerLink]="['/delete-parking']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                              </a>
+                            </td>
+                            <td>
+                              <a [routerLink]="['/space-request']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-list"></i> <b>5</b> demandes à traiter
+                                </button>
+                              </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Parking Cesar</td>
+                            <td>Chez Pépé</td>
+                            <td>1</td>
+                            <td>
+                              <a [routerLink]="['/parking-spaces']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                              </a>
+                              <a [routerLink]="['/update-parking']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-warning" style="color:white">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                              </a>
+                              <a [routerLink]="['/delete-parking']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                              </a>
+                            </td>
+                            <td>
+                              <a [routerLink]="['/space-request']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                                <button type="button" class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-list"></i> <b>3</b> demandes à traiter
+                                </button>
+                              </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

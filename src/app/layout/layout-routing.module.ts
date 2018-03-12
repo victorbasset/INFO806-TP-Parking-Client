@@ -9,8 +9,10 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+            { path: 'parkings', loadChildren: './parkings/parkings.module#ParkingsModule' },
+            { path: 'add-parking', loadChildren: './add-parking/add-parking.module#AddParkingModule' },
+            { path: 'update-parking', loadChildren: './update-parking/update-parking.module#UpdateParkingModule' },
+            { path: 'parking-spaces', loadChildren: './parking-spaces/parking-spaces.module#ParkingSpacesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
