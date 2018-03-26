@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-    selector: 'app-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss']
+    selector: 'app-modal-release',
+    templateUrl: './modal-release.component.html',
+    styleUrls: ['./modal-release.component.scss']
 })
-export class ModalComponent {
+export class ModalReleaseComponent {
     closeResult: string;
     constructor(private modalService: NgbModal) { }
 
