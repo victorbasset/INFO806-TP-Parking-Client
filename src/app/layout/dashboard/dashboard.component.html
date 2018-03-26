@@ -1,3 +1,8 @@
+<style>
+  a:hover {
+    text-decoration: none;
+  }
+</style>
 <div [@routerTransition]>
     <h2 class="text-muted">Bienvenue sur l'application ParkinGo !</h2>
     <div class="row">
@@ -16,16 +21,24 @@
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa-car'" [label]="'Voiture'" ></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'primary'" [icon]="'fa-car'" [count]="'27'" [label]="'Voiture'" ></app-stat>
+          </a>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'warning'" [icon]="'fa-bicycle'" [label]="'Vélo'" ></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'warning'" [icon]="'fa-bicycle'" [count]="'27'" [label]="'Vélo'" ></app-stat>
+          </a>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'success'" [icon]="'fa-plane'" [label]="'Avion'" ></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'success'" [icon]="'fa-plane'" [count]="'27'" [label]="'Avion'" ></app-stat>
+          </a>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [icon]="'fab fa-accessible-icon'" [label]="'Handicapé'"></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'danger'" [icon]="'fab fa-accessible-icon'" [count]="'27'" [label]="'Handicapé'"></app-stat>
+          </a>
         </div>
     </div>
     <hr />
