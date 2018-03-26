@@ -1,0 +1,53 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Places'" [icon]="'far fa-square'">
+
+    </app-page-header>
+    <a [routerLink]="['/add-space']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+      <button type="button" class="btn btn-success" style="margin-bottom: 15px">
+        Ajouter des places
+      </button>
+    </a>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+          <div class="card mb-3">
+            <div class="card-header">Toutes les places disponibles</div>
+            <table class="card-body table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Propriétaire</th>
+                  <th>Type</th>
+                  <th>Demander une réservation</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="table-success">
+                <th scope="row">1</th>
+                <td>Jacob</td>
+                <td>Avion</td>
+                <td><app-modal-release></app-modal-release></td>
+              </tr>
+              <tr class="table-info">
+                <th scope="row">2</th>
+                <td>Larry</td>
+                <td>Voiture</td>
+                <td><app-modal-release></app-modal-release></td>
+              </tr>
+              <tr class="table-warning">
+                <th scope="row">3</th>
+                <td>--</td>
+                <td>Vélo</td>
+                <td><app-modal-request></app-modal-request></td>
+              </tr>
+              <tr class="table-danger">
+                <th scope="row">4</th>
+                <td>Larry</td>
+                <td>Handicapé</td>
+                <td><app-modal-request></app-modal-request></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</div>
