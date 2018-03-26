@@ -1,0 +1,65 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Liste des demandes'" [icon]="'fas fa-bars'">
+
+    </app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+          <div class="card mb-3">
+            <div class="card-header">Toutes les demandes à traiter</div>
+            <table class="card-body table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Client</th>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Demande</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr class="table-success">
+                <th scope="row">1</th>
+                <td>Jacob</td>
+                <td>11 janvier 2018 à 18h29</td>
+                <td>Avion</td>
+                <td>
+                  <app-modal-accept></app-modal-accept>
+                  <app-modal-refuse></app-modal-refuse>
+                </td>
+              </tr>
+              <tr class="table-info">
+                <th scope="row">2</th>
+                <td>Larry</td>
+                <td>11 janvier 2018 à 18h29</td>
+                <td>Voiture</td>
+                <td>
+                  <app-modal-accept></app-modal-accept>
+                  <app-modal-refuse></app-modal-refuse>
+                </td>
+              </tr>
+              <tr class="table-warning">
+                <th scope="row">3</th>
+                <td>Georges</td>
+                <td>11 janvier 2018 à 18h29</td>
+                <td>Vélo</td>
+                <td>
+                  <app-modal-accept></app-modal-accept>
+                  <app-modal-refuse></app-modal-refuse>
+                </td>
+              </tr>
+              <tr class="table-danger">
+                <th scope="row">4</th>
+                <td>Larry</td>
+                <td>11 janvier 2018 à 18h29</td>
+                <td>Handicapé</td>
+                <td>
+                  <app-modal-accept></app-modal-accept>
+                  <app-modal-refuse></app-modal-refuse>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</div>

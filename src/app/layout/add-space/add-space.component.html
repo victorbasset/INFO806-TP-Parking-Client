@@ -1,0 +1,33 @@
+<div [@routerTransition]>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <i class="fa fa-table"></i> <a href="Javascript:void(0)" [routerLink]="['/parkings']">Parkings</a>
+    </li>
+    <li class="breadcrumb-item">
+      <i class="far fa-square"></i> <a href="Javascript:void(0)" [routerLink]="['/parking-spaces']">Places</a>
+    </li>
+    <li class="breadcrumb-item active"><i class="fa fa-plus"></i> Ajouter une place</li>
+  </ol>
+  <div class="col-lg-6">
+    <form role="form">
+      <fieldset class="form-group">
+        <label>Nb de places</label>
+        <input class="form-control" placeholder="Nb de places">
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label>Type</label>
+        <select class="form-control">
+          <option value="" disabled selected hidden>Sélectionner un type</option>
+          <option>Voiture</option>
+          <option>Avion</option>
+          <option>Vélo</option>
+          <option>Handicapé</option>
+        </select>
+      </fieldset>
+
+      <button type="submit" class="btn btn-success">Ajouter</button>
+
+    </form>
+  </div>
+</div>
