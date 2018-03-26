@@ -2,6 +2,11 @@
     <app-page-header [heading]="'Places'" [icon]="'far fa-square'">
 
     </app-page-header>
+    <a [routerLink]="['/add-space']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+      <button type="button" class="btn btn-success" style="margin-bottom: 15px">
+        Ajouter des places
+      </button>
+    </a>
     <div class="row">
         <div class="col col-xl-12 col-lg-12">
           <div class="card mb-3">

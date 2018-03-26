@@ -11,6 +11,7 @@ const routes: Routes = [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'parkings', loadChildren: './parkings/parkings.module#ParkingsModule' },
             { path: 'add-parking', loadChildren: './add-parking/add-parking.module#AddParkingModule' },
+            { path: 'add-space', loadChildren: './add-space/add-space.module#AddSpaceModule' },
             { path: 'update-parking', loadChildren: './update-parking/update-parking.module#UpdateParkingModule' },
             { path: 'parking-spaces', loadChildren: './parking-spaces/parking-spaces.module#ParkingSpacesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
