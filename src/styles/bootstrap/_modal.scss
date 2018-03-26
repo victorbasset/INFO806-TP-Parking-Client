@@ -1,7 +1,7 @@
 // .modal-open      - body class for killing the scroll
-// .modal           - container to scroll within
-// .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and stuff
+// .modal-accept           - container to scroll within
+// .modal-accept-dialog    - positioning shell for the actual modal-accept
+// .modal-accept-content   - actual modal-accept w/ bg and corners and stuff
 
 
 // Kill the scroll on the body
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-// Container that the modal scrolls within
+// Container that the modal-accept scrolls within
 .modal {
   position: fixed;
   top: 0;
@@ -32,15 +32,15 @@
   }
 }
 
-// Shell div to position the modal with bottom padding
+// Shell div to position the modal-accept with bottom padding
 .modal-dialog {
   position: relative;
   width: auto;
   margin: $modal-dialog-margin;
-  // allow clicks to pass through for custom click handling to close modal
+  // allow clicks to pass through for custom click handling to close modal-accept
   pointer-events: none;
 
-  // When fading in the modal, animate it to slide down
+  // When fading in the modal-accept, animate it to slide down
   .modal.fade & {
     @include transition($modal-transition);
     transform: translate(0, -25%);
@@ -56,20 +56,20 @@
   min-height: calc(100% - (#{$modal-dialog-margin} * 2));
 }
 
-// Actual modal
+// Actual modal-accept
 .modal-content {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
-  // counteract the pointer-events: none; in the .modal-dialog
+  width: 100%; // Ensure `.modal-accept-content` extends the full width of the parent `.modal-accept-dialog`
+  // counteract the pointer-events: none; in the .modal-accept-dialog
   pointer-events: auto;
   background-color: $modal-content-bg;
   background-clip: padding-box;
   border: $modal-content-border-width solid $modal-content-border-color;
   @include border-radius($border-radius-lg);
   @include box-shadow($modal-content-box-shadow-xs);
-  // Remove focus outline from opened modal
+  // Remove focus outline from opened modal-accept
   outline: 0;
 }
 
@@ -89,18 +89,18 @@
 }
 
 // Modal header
-// Top section of the modal w/ title and dismiss
+// Top section of the modal-accept w/ title and dismiss
 .modal-header {
   display: flex;
   align-items: flex-start; // so the close btn always stays on the upper right corner
-  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+  justify-content: space-between; // Put modal-accept header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
   @include border-top-radius($border-radius-lg);
 
   .close {
     padding: $modal-header-padding;
-    // auto on the left force icon to the right even when there is no .modal-title
+    // auto on the left force icon to the right even when there is no .modal-accept-title
     margin: (-$modal-header-padding) (-$modal-header-padding) (-$modal-header-padding) auto;
   }
 }
@@ -112,11 +112,11 @@
 }
 
 // Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
+// Where all modal-accept content resides (sibling of .modal-accept-header and .modal-accept-footer)
 .modal-body {
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible
-  // when should there be a fixed height on `.modal-dialog`.
+  // when should there be a fixed height on `.modal-accept-dialog`.
   flex: 1 1 auto;
   padding: $modal-inner-padding;
 }
@@ -134,7 +134,7 @@
   > :not(:last-child) { margin-right: .25rem; }
 }
 
-// Measure scrollbar width for padding body during modal show/hide
+// Measure scrollbar width for padding body during modal-accept show/hide
 .modal-scrollbar-measure {
   position: absolute;
   top: -9999px;
@@ -143,9 +143,9 @@
   overflow: scroll;
 }
 
-// Scale up the modal
+// Scale up the modal-accept
 @include media-breakpoint-up(sm) {
-  // Automatically set modal's width for larger viewports
+  // Automatically set modal-accept's width for larger viewports
   .modal-dialog {
     max-width: $modal-md;
     margin: $modal-dialog-margin-y-sm-up auto;
