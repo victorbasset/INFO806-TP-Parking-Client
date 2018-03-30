@@ -14,22 +14,15 @@ export class DashboardComponent implements OnInit {
     constructor() {
         this.sliders.push(
             {
-                imagePath: 'assets/images/plane.jpg',
-                label: 'Réserver votre place de parking !',
-                text:
-                    'Avion'
-            },
-            {
-                imagePath: 'assets/images/slider2.jpg',
+                imagePath: 'assets/images/car.png',
                 label: 'Réserver votre place de parking !',
                 text: 'Voiture'
             },
             {
-                imagePath: 'assets/images/slider3.jpg',
+                imagePath: 'assets/images/plane.jpg',
                 label: 'Réserver votre place de parking !',
-                text:
-                    'Vélo'
-            }
+                text: 'Avion'
+            },
         );
 
         this.alerts.push(
