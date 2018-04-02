@@ -14,7 +14,8 @@ const routes: Routes = [
             { path: 'space-requests', loadChildren: './space-requests/space-requests.module#SpaceRequestsModule' },
             { path: 'add-space', loadChildren: './add-space/add-space.module#AddSpaceModule' },
             { path: 'update-parking', loadChildren: './update-parking/update-parking.module#UpdateParkingModule' },
-            { path: 'parking-spaces', loadChildren: './parking-spaces/parking-spaces.module#ParkingSpacesModule' },
+            { path: 'update-space', loadChildren: './update-space/update-space.module#UpdateSpaceModule' },
+            { path: 'spaces', loadChildren: './spaces/spaces.module#SpacesModule' },
         ]
     }
 ];

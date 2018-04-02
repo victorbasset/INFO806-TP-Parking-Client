@@ -1,14 +1,24 @@
+<style>
+  a:hover {
+    text-decoration: none;
+  }
+</style>
 <div [@routerTransition]>
-    <h2 class="text-muted">Bienvenue sur l'application ParkinGo !</h2>
     <div class="row">
         <div class="col-md-12">
             <ngb-carousel>
                 <ng-template ngbSlide *ngFor="let slider of sliders">
+                  <a href="Javascript:void(0)" [routerLink]="['/parkings']">
                     <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%">
-                    <div class="carousel-caption">
-                        <h3>{{slider.label}}</h3>
+                    <div *ngIf="slider.text == 'Avion'" class="carousel-caption" style="color: white;text-shadow: 0px 0px 7px black;background-color: rgba(0, 0, 0, 0.5);border-radius: 10px">
+                        <h3 >{{slider.label}}</h3>
                         <p>{{slider.text}}</p>
                     </div>
+                    <div  *ngIf="slider.text == 'Voiture'" class="carousel-caption" style="text-shadow: 0px 0px 7px white; color:black;background-color: rgba(255, 255, 255, 0.5);border-radius: 10px">
+                      <h3>{{slider.label}}</h3>
+                      <p> {{slider.text}}</p>
+                    </div>
+                  </a>
                 </ng-template>
             </ngb-carousel>
         </div>
@@ -16,16 +26,24 @@
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa-car'" [label]="'Voiture'" ></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'primary'" [icon]="'fa-car'" [count]="'27'" [label]="'Voiture'" ></app-stat>
+          </a>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'warning'" [icon]="'fa-bicycle'" [label]="'Vélo'" ></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'warning'" [icon]="'fa-bicycle'" [count]="'27'" [label]="'Vélo'" ></app-stat>
+          </a>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'success'" [icon]="'fa-plane'" [label]="'Avion'" ></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'success'" [icon]="'fa-plane'" [count]="'27'" [label]="'Avion'" ></app-stat>
+          </a>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [icon]="'fab fa-accessible-icon'" [label]="'Handicapé'"></app-stat>
+          <a href="Javascript:void(0)" [routerLink]="['/parkings']">
+            <app-stat [bgClass]="'danger'" [icon]="'fab fa-accessible-icon'" [count]="'27'" [label]="'Handicapé'"></app-stat>
+          </a>
         </div>
     </div>
     <hr />
