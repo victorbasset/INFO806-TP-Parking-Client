@@ -24,7 +24,7 @@ export class ServiceRestParking {
   }
 
   public putParking(parking){
-    return this.http.put(environment.apiUrl + 'parkings', parking)
+    return this.http.put(environment.apiUrl + 'parkings', parking);
   }
 
 }
