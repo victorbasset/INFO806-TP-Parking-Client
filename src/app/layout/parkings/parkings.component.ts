@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ServiceRestParking } from '../../../service/service.rest.parking';
 
 @Component({
     selector: 'app-parkings',
@@ -8,7 +9,15 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class ParkingsComponent implements OnInit {
-    constructor() {}
 
-    ngOnInit() {}
+  public parkings:any;
+
+  constructor(private serviceRestParking: ServiceRestParking) {}
+
+  ngOnInit() {
+    this.serviceRestParking.allParkings().subscribe(
+      data => this.parkings = data,
+      err => err
+    )
+  }
 }
