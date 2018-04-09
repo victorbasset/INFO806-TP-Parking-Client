@@ -22,53 +22,11 @@
                 </tr>
               </thead>
               <tbody>
-              <tr class="table-success">
-                <th scope="row">1</th>
-                <td>Jacob</td>
-                <td>Avion</td>
+              <tr class="table-success" *ngFor="let spaces of parking?.spaces">
+                <th scope="row">{{ spaces.id }}</th>
+                <td>{{ spaces.user }}</td>
+                <td>{{ spaces.type }}</td>
                 <td><app-modal-release></app-modal-release></td>
-                <td>
-                  <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
-                    <button type="button" class="btn btn-sm btn-warning" style="color:white">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                  </a>
-                  <app-modal-delete></app-modal-delete>
-                </td>
-              </tr>
-              <tr class="table-info">
-                <th scope="row">2</th>
-                <td>Larry</td>
-                <td>Voiture</td>
-                <td><app-modal-release></app-modal-release></td>
-                <td>
-                  <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
-                    <button type="button" class="btn btn-sm btn-warning" style="color:white">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                  </a>
-                  <app-modal-delete></app-modal-delete>
-                </td>
-              </tr>
-              <tr class="table-warning">
-                <th scope="row">3</th>
-                <td>--</td>
-                <td>Vélo</td>
-                <td><app-modal-request></app-modal-request></td>
-                <td>
-                  <a [routerLink]="['/update-parking']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
-                    <button type="button" class="btn btn-sm btn-warning" style="color:white">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                  </a>
-                  <app-modal-delete></app-modal-delete>
-                </td>
-              </tr>
-              <tr class="table-danger">
-                <th scope="row">4</th>
-                <td>Larry</td>
-                <td>Handicapé</td>
-                <td><app-modal-request></app-modal-request></td>
                 <td>
                   <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                     <button type="button" class="btn btn-sm btn-warning" style="color:white">
