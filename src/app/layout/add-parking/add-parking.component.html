@@ -5,12 +5,12 @@
       <form role="form" (ngSubmit)="onSubmit()">
         <fieldset class="form-group">
           <label>Nom</label>
-          <input class="form-control" placeholder="Nom" name="name" required [(ngModel)]="this.name">
+          <input class="form-control" placeholder="Nom" name="name" required [(ngModel)]="this.name"  minlength="1">
         </fieldset>
 
         <fieldset class="form-group">
           <label>Adresse</label>
-          <input class="form-control" placeholder="Adresse" name="address" required [(ngModel)]="this.address">
+          <input class="form-control" placeholder="Adresse" name="address" required [(ngModel)]="this.address" minlength="1">
         </fieldset>
 
         <button type="submit" class="btn btn-success">Ajouter</button>

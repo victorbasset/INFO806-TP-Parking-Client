@@ -18,7 +18,8 @@ export class AddParkingComponent implements OnInit {
     ngOnInit() {}
 
     onSubmit(){
-      this.serviceRestParking.addParking({"name": this.name, "address": this.address}).subscribe();
-      this.router.navigate(["/parkings"]);
+      this.serviceRestParking.addParking({"name": this.name, "address": this.address}).subscribe(
+        success => this.router.navigate(["/parkings"])
+      );
     }
 }
