@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ServiceRestParking } from '../../../service/service.rest.parking';
+import { ServiceRestSpace } from '../../../service/service.rest.space';
 
 @Component({
     selector: 'app-spaces',
@@ -12,11 +12,16 @@ import { ServiceRestParking } from '../../../service/service.rest.parking';
 export class SpacesComponent implements OnInit {
 
   id:number = this.activeRoute.snapshot.params['id'];
-  public parking:any;
+  public spaces:any;
 
-  constructor(private router:Router, private activeRoute: ActivatedRoute, private serviceRestParking: ServiceRestParking) {}
+  constructor(private router:Router, private activeRoute: ActivatedRoute, private serviceRestSpace: ServiceRestSpace) {}
 
   ngOnInit() {
-    this.serviceRestParking.getParking(this.id).subscribe(data => this.parking = data);
+    this.serviceRestSpace.allSpaces().subscribe(data => this.spaces = data);
+  }
+
+  onDeleted(id) {
+    const index = this.spaces.findIndex(space => space.id === id);
+    this.spaces.splice(index, 1);
   }
 }

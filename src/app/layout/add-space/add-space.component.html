@@ -4,25 +4,25 @@
       <i class="fa fa-table"></i> <a href="Javascript:void(0)" [routerLink]="['/parkings']">Parkings</a>
     </li>
     <li class="breadcrumb-item">
-      <i class="far fa-square"></i> <a href="Javascript:void(0)" [routerLink]="['/spaces']">Places</a>
+      <i class="far fa-square"></i> <a href="Javascript:void(0)" [routerLink]="['/spaces', id]">Places</a>
     </li>
     <li class="breadcrumb-item active"><i class="fa fa-plus"></i> Ajouter des places</li>
   </ol>
   <div class="col-lg-6">
-    <form role="form">
+    <form role="form" (ngSubmit)="onSubmit()">
       <fieldset class="form-group">
         <label>Nb de places</label>
-        <input class="form-control" placeholder="Nb de places">
+        <input [(ngModel)]="nb" class="form-control" name="nbplaces" placeholder="Nb de places">
       </fieldset>
 
       <fieldset class="form-group">
         <label>Type</label>
-        <select class="form-control">
+        <select [(ngModel)]="type" class="form-control" name="type">
           <option value="" disabled selected hidden>Sélectionner un type</option>
-          <option>Voiture</option>
-          <option>Avion</option>
-          <option>Vélo</option>
-          <option>Handicapé</option>
+          <option value="CAR">Voiture</option>
+          <option value="PLANE">Avion</option>
+          <option value="BICYCLE">Vélo</option>
+          <option value="CAR_DISABLED">Handicapé</option>
         </select>
       </fieldset>
 
