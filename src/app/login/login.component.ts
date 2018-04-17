@@ -20,20 +20,20 @@ export class LoginComponent implements OnInit {
     ngOnInit() {}
 
     onLoggedin() {
-
-      this.serviceRestUser.getMe('f9e80329-8ebe-46c2-97b5-9ebf37ad3074').subscribe( user => localStorage.setItem('id', user["id"]));
-
       this.serviceRestOauth.login(this.username,this.password).subscribe(
         data => {
+          this.serviceRestUser.getMe(data["access_token"]).subscribe(data => {
+            localStorage.setItem('id', data["id"]);
+            localStorage.setItem('role', data["role"]);
+          });
           localStorage.setItem('username', this.username);
           localStorage.setItem('access_token', data["access_token"]);
           localStorage.setItem('refresh_token', data["refresh_token"]);
           localStorage.setItem('expires_in', data["expires_in"]);
           localStorage.setItem('isLoggedin', 'true');
-          this.router.navigate(["/dashboard"]);
         },
         err => { console.log(err); }
       );
-
+      this.router.navigate(["/dashboard"]);
     }
 }

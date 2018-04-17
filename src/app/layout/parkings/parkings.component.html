@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item active"><i class="fa fa-table"></i> Parkings</li>
     </ol>
-    <a [routerLink]="['/add-parking']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+    <a *ngIf="role == 'ADMIN'" [routerLink]="['/add-parking']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
       <button type="button" class="btn btn-success" style="margin-bottom: 15px">
           Ajouter un parking
       </button>

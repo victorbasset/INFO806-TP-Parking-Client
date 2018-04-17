@@ -11,10 +11,12 @@ import { ServiceRestParking } from '../../../service/service.rest.parking';
 export class ParkingsComponent implements OnInit {
 
   public parkings:any;
+  public role:string = localStorage.getItem('role');
 
   constructor(private serviceRestParking: ServiceRestParking) {}
 
   ngOnInit() {
+    console.log(localStorage.getItem('id'));
     this.serviceRestParking.allParkings().subscribe(
       data => this.parkings = data
     );
