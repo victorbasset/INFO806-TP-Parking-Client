@@ -23,8 +23,9 @@
                             <th>Nom</th>
                             <th>Adresse</th>
                             <th>Nb. de places disponibles</th>
-                            <th>Commande</th>
-                            <th>Liste des demandes</th>
+                            <th *ngIf="role == 'USER'" >Voir les places disponibles</th>
+                            <th *ngIf="role == 'ADMIN'" >Commande</th>
+                            <th *ngIf="role == 'ADMIN'" >Liste des demandes</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -39,14 +40,14 @@
                                       <i class="fas fa-eye"></i>
                                 </button>
                               </a>
-                              <a [routerLink]="['/update-parking', parking.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                              <a *ngIf="role == 'ADMIN'" [routerLink]="['/update-parking', parking.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                                 <button type="button" class="btn btn-sm btn-warning" style="color:white;">
                                     <i class="fas fa-edit"></i>
                                 </button>
                               </a>
-                              <app-modal [id]=parking.id (onDeleted)="onDeleted($event)" ></app-modal>
+                              <app-modal *ngIf="role == 'ADMIN'" [id]=parking.id (onDeleted)="onDeleted($event)" ></app-modal>
                             </td>
-                            <td>
+                            <td *ngIf="role == 'ADMIN'">
                               <a [routerLink]="['/space-requests']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
                                 <button type="button" class="btn btn-sm btn-secondary">
                                     <i class="fas fa-list"></i> <b>5</b> demandes à traiter

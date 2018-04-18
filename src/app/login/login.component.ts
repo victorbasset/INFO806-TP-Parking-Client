@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
           this.serviceRestUser.getMe(result["access_token"]).subscribe(data => {
             localStorage.setItem('id', data["id"]);
             localStorage.setItem('role', data["role"]);
+            console.log(localStorage);
             this.router.navigate(["/dashboard"]);
           });
       });

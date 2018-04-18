@@ -29,4 +29,9 @@ export class ServiceRestParking {
     return this.http.put(environment.apiUrl + 'parkings', parking,{headers: this.headers});
   }
 
+  public findByParking(id) {
+    return this.http.get(environment.apiUrl + 'parking/' + id + '/spaces',{headers: this.headers});
+  }
+
+
 }

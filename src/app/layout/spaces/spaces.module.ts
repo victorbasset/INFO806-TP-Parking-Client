@@ -5,11 +5,12 @@ import { ModalRequestComponent, ModalReleaseComponent, ModalDeleteComponent } fr
 import { SpacesRoutingModule } from './spaces-routing.module';
 import { SpacesComponent } from './spaces.component';
 import { PageHeaderModule } from './../../shared';
+import { ServiceRestParking } from '../../../service/service.rest.parking';
 import { ServiceRestSpace } from '../../../service/service.rest.space';
 
 @NgModule({
     imports: [CommonModule, SpacesRoutingModule, PageHeaderModule, NgbModule.forRoot()],
     declarations: [SpacesComponent, ModalReleaseComponent, ModalDeleteComponent, ModalRequestComponent],
-    providers: [ServiceRestSpace]
+    providers: [ServiceRestParking,ServiceRestSpace]
 })
 export class SpacesModule {}

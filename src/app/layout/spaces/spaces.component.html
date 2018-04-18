@@ -2,7 +2,7 @@
     <app-page-header [heading]="'Places'" [icon]="'far fa-square'">
 
     </app-page-header>
-    <a [routerLink]="['/add-space', id]" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+    <a  *ngIf="role == 'ADMIN'" [routerLink]="['/add-space', id]" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
       <button type="button" class="btn btn-success" style="margin-bottom: 15px">
         Ajouter des places
       </button>
@@ -17,8 +17,8 @@
                   <th>#</th>
                   <th>Propriétaire</th>
                   <th>Type</th>
-                  <th>Demander une réservation</th>
-                  <th>Commande</th>
+                  <th *ngIf="role == 'USER'">Demander une réservation</th>
+                  <th *ngIf="role == 'ADMIN'">Commande</th>
                 </tr>
               </thead>
               <tbody>
@@ -27,69 +27,69 @@
                   <th scope="row">{{ space.id }}</th>
                   <td>{{ space.user }}</td>
                   <td>Voiture</td>
-                  <td *ngIf="space.user == null"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null"><app-modal-release></app-modal-release></td>
-                  <td>
+                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
+                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <td *ngIf="role == 'ADMIN'">
                     <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
                     </a>
-                    <app-modal-delete></app-modal-delete>
+                    <app-modal-delete [id]=space.id (onDeleted)="onDeleted($event)" ></app-modal-delete>
                   </td>
                 </tr>
                 <tr class="table-warning" *ngIf="space.type == 'BICYCLE'">
                   <th scope="row">{{ space.id }}</th>
                   <td>{{ space.user }}</td>
                   <td>Vélo</td>
-                  <td *ngIf="space.user == null"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null"><app-modal-release></app-modal-release></td>
-                  <td>
+                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
+                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <td *ngIf="role == 'ADMIN'">
                     <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
                     </a>
-                    <app-modal-delete></app-modal-delete>
+                    <app-modal-delete [id]=space.id (onDeleted)="onDeleted($event)" ></app-modal-delete>
                   </td>
                 </tr>
                 <tr class="table-success" *ngIf="space.type == 'PLANE'">
                   <th scope="row">{{ space.id }}</th>
                   <td>{{ space.user }}</td>
                   <td>Avion</td>
-                  <td *ngIf="space.user == null"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null"><app-modal-release></app-modal-release></td>
-                  <td>
+                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
+                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <td *ngIf="role == 'ADMIN'">
                     <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
                     </a>
-                    <app-modal-delete></app-modal-delete>
+                    <app-modal-delete [id]=space.id (onDeleted)="onDeleted($event)" ></app-modal-delete>
                   </td>
                 </tr>
                 <tr class="table-danger" *ngIf="space.type == 'CAR_DISABLED'">
                   <th scope="row">{{ space.id }}</th>
                   <td>{{ space.user }}</td>
                   <td>Handicapé</td>
-                  <td *ngIf="space.user == null"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null"><app-modal-release></app-modal-release></td>
-                  <td>
+                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
+                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <td *ngIf="role == 'ADMIN'">
                     <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
                     </a>
-                    <app-modal-delete></app-modal-delete>
+                    <app-modal-delete [id]=space.id (onDeleted)="onDeleted($event)" ></app-modal-delete>
                   </td>
                 </tr>
                 <tr class="table" *ngIf="space.type == null">
                   <th scope="row">{{ space.id }}</th>
                   <td>{{ space.user }}</td>
                   <td></td>
-                  <td *ngIf="space.user == null"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null"><app-modal-release></app-modal-release></td>
-                  <td>
+                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
+                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <td *ngIf="role == 'ADMIN'">
                     <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
