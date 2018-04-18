@@ -20,17 +20,17 @@ export class ServiceRestSpace {
 
   public addSpace(space) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.post(environment.apiUrl + 'spaces', space,{headers: token});
+    return this.http.post(environment.apiAdminUrl + 'spaces', space,{headers: token});
   }
 
   public addManySpace(nb, space) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.post(environment.apiUrl + 'spaces/' + nb, space,{headers: token});
+    return this.http.post(environment.apiAdminUrl + 'spaces/' + nb, space,{headers: token});
   }
 
   public deleteSpace(id){
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.delete(environment.apiUrl + 'spaces/' + id,{headers: token})
+    return this.http.delete(environment.apiAdminUrl + 'spaces/' + id,{headers: token})
   }
 
 }

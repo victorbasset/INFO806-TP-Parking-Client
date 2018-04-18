@@ -19,17 +19,17 @@ export class ServiceRestParking {
 
   public addParking(parking) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.post(environment.apiUrl + 'parkings', parking,{headers: token});
+    return this.http.post(environment.apiAdminUrl + 'parkings', parking,{headers: token});
   }
 
   public deleteParking(id) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.delete(environment.apiUrl + 'parkings/' + id,{headers: token});
+    return this.http.delete(environment.apiAdminUrl + 'parkings/' + id,{headers: token});
   }
 
   public putParking(parking){
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.put(environment.apiUrl + 'parkings', parking,{headers: token});
+    return this.http.put(environment.apiAdminUrl + 'parkings', parking,{headers: token});
   }
 
   public findByParking(id) {

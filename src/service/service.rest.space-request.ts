@@ -9,7 +9,7 @@ export class ServiceRestSpaceRequest {
 
   public allRequests() {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.get(environment.apiUrl + 'space-requests',{headers: token});
+    return this.http.get(environment.apiAdminUrl + 'space-requests',{headers: token});
   }
 
   public addRequest(spaceRequest) {
@@ -19,12 +19,12 @@ export class ServiceRestSpaceRequest {
 
   public acceptRequest(id) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.get(environment.apiUrl + 'space-requests/accept/' + id,{headers: token});
+    return this.http.get(environment.apiAdminUrl + 'space-requests/accept/' + id,{headers: token});
   }
 
   public rejectRequest(id) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.get(environment.apiUrl + 'space-requests/reject/' + id,{headers: token});
+    return this.http.get(environment.apiAdminUrl + 'space-requests/reject/' + id,{headers: token});
   }
 
 }
