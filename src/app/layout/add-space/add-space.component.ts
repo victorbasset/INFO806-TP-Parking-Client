@@ -27,8 +27,8 @@ export class AddSpaceComponent implements OnInit {
       if(this.type != undefined){
         if(this.nb == 1) {
           this.serviceRestSpace.addSpace({
-            "user": null,
-            "parking": {"id": this.id},
+            "userId": null,
+            "parkingId":this.id,
             "type": this.type
           }).subscribe(
             success => this.router.navigate(["/spaces", this.id])
@@ -36,8 +36,8 @@ export class AddSpaceComponent implements OnInit {
         }
         if(this.nb > 1) {
           this.serviceRestSpace.addManySpace(this.nb,{
-            "user": null,
-            "parking": {"id": this.id},
+            "userId": null,
+            "parkingId": this.id,
             "type": this.type
           }).subscribe(
             success => this.router.navigate(["/spaces", this.id])
