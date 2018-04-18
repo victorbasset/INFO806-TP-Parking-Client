@@ -16,7 +16,6 @@ export class ParkingsComponent implements OnInit {
   constructor(private serviceRestParking: ServiceRestParking) {}
 
   ngOnInit() {
-    console.log(localStorage.getItem('id'));
     this.serviceRestParking.allParkings().subscribe(
       data => this.parkings = data
     );

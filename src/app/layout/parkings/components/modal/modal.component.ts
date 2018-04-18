@@ -33,6 +33,7 @@ export class ModalComponent {
       }
   }
   private deleteParking(){
+    console.log(this.id);
     this.serviceRestParking.deleteParking(this.id).subscribe();
     this.onDeleted.emit(this.id);
   }

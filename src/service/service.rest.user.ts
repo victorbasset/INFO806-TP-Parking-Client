@@ -26,6 +26,6 @@ export class ServiceRestUser {
   }
 
   public getMe(token) {
-    return this.http.get(environment.apiUrl + 'users/me',{headers:  new HttpHeaders().set('Authorization', 'Bearer' + token)});
+    return this.http.get(environment.apiUrl + 'users/me',{headers:  new HttpHeaders().set('Authorization', 'Bearer ' + token)});
   }
 }

@@ -20,20 +20,25 @@ export class LoginComponent implements OnInit {
     ngOnInit() {}
 
     onLoggedin() {
-      this.serviceRestOauth.login(this.username,this.password).subscribe(
-        data => {
-          this.serviceRestUser.getMe(data["access_token"]).subscribe(data => {
+      new Promise((resolve) => {
+        this.serviceRestOauth.login(this.username,this.password).subscribe(
+          data => {
+            localStorage.setItem('username', this.username);
+            localStorage.setItem('access_token', data["access_token"]);
+            localStorage.setItem('refresh_token', data["refresh_token"]);
+            localStorage.setItem('expires_in', data["expires_in"]);
+            localStorage.setItem('isLoggedin', 'true');
+            resolve({
+              token: data["access_token"],
+            });
+          });
+      }).then(
+        ({token}) => {
+          this.serviceRestUser.getMe(token).subscribe(data => {
             localStorage.setItem('id', data["id"]);
             localStorage.setItem('role', data["role"]);
+            this.router.navigate(["/dashboard"]);
           });
-          localStorage.setItem('username', this.username);
-          localStorage.setItem('access_token', data["access_token"]);
-          localStorage.setItem('refresh_token', data["refresh_token"]);
-          localStorage.setItem('expires_in', data["expires_in"]);
-          localStorage.setItem('isLoggedin', 'true');
-        },
-        err => { console.log(err); }
-      );
-      this.router.navigate(["/dashboard"]);
+        });
     }
 }
