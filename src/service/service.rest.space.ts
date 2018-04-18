@@ -5,28 +5,32 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class ServiceRestSpace {
 
-  public headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
 
   constructor(private http: HttpClient) {}
 
   public allSpaces() {
-    return this.http.get(environment.apiUrl + 'spaces',{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'spaces',{headers: token});
   }
 
   public getSpace(id) {
-    return this.http.get(environment.apiUrl + 'spaces/' + id,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'spaces/' + id,{headers: token});
   }
 
   public addSpace(space) {
-    return this.http.post(environment.apiUrl + 'spaces', space,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post(environment.apiUrl + 'spaces', space,{headers: token});
   }
 
   public addManySpace(nb, space) {
-    return this.http.post(environment.apiUrl + 'spaces/' + nb, space,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post(environment.apiUrl + 'spaces/' + nb, space,{headers: token});
   }
 
   public deleteSpace(id){
-    return this.http.delete(environment.apiUrl + 'spaces/' + id,{headers: this.headers})
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.delete(environment.apiUrl + 'spaces/' + id,{headers: token})
   }
 
 }

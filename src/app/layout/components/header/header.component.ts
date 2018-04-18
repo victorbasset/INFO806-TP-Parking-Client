@@ -47,15 +47,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-
-        localStorage.removeItem('isLoggedin');
-        localStorage.removeItem('username');
-        localStorage.removeItem('id');
-        localStorage.removeItem('role');
-        localStorage.removeItem('expires_in');
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        console.log(localStorage);
+      localStorage.clear();
     }
 
     changeLang(language: string) {

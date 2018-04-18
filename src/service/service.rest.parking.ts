@@ -5,32 +5,36 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class ServiceRestParking {
 
-  public headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-
   constructor(private http: HttpClient) {}
 
   public allParkings() {
-    return this.http.get(environment.apiUrl + 'parkings',{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'parkings',{headers: token});
   }
 
   public getParking(id) {
-    return this.http.get(environment.apiUrl + 'parkings/' + id,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'parkings/' + id,{headers: token});
   }
 
   public addParking(parking) {
-    return this.http.post(environment.apiUrl + 'parkings', parking,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.post(environment.apiUrl + 'parkings', parking,{headers: token});
   }
 
   public deleteParking(id) {
-    return this.http.delete(environment.apiUrl + 'parkings/' + id,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.delete(environment.apiUrl + 'parkings/' + id,{headers: token});
   }
 
   public putParking(parking){
-    return this.http.put(environment.apiUrl + 'parkings', parking,{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.put(environment.apiUrl + 'parkings', parking,{headers: token});
   }
 
   public findByParking(id) {
-    return this.http.get(environment.apiUrl + 'parking/' + id + '/spaces',{headers: this.headers});
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'parking/' + id + '/spaces',{headers: token});
   }
 
 
