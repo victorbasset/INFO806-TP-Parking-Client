@@ -45,7 +45,14 @@ export class DashboardComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+      console.log(localStorage.getItem('access_token'),
+        localStorage.getItem('refresh_token'),
+        localStorage.getItem('role'),
+        localStorage.getItem('id'),
+        localStorage.getItem('username'),
+        )
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);

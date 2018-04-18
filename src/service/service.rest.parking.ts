@@ -5,7 +5,7 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class ServiceRestParking {
 
-  public headers = new HttpHeaders().set('Authorization', 'Bearer' + localStorage.getItem('access_token'));
+  public headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
 
   constructor(private http: HttpClient) {}
 
