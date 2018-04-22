@@ -25,12 +25,21 @@
               <ng-container *ngFor="let space of spaces">
                 <tr class="table-info" *ngIf="space.type == 'CAR'">
                   <th scope="row">{{ space.id }}</th>
-                  <td>{{ space.user }}</td>
+                  <td *ngIf="space.user?.id == userId"><b>{{ space.user?.name }}</b></td>
+                  <td *ngIf="space.user?.id != userId">{{ space.user?.name }}</td>
                   <td>Voiture</td>
-                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <ng-container *ngIf="role == 'USER'" >
+                    <td *ngIf="space?.requested"><b>Votre demande est en cours de traitement</b></td>
+                    <td *ngIf="space.user == null && !space?.requested">
+                      <app-modal-request [id]=space.id (onAddRequest)="onAddRequest($event)"></app-modal-request>
+                    </td>
+                    <td *ngIf="space.user?.id == userId && !space?.requested">
+                      <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+                    </td>
+                    <td *ngIf="space.user?.id != userId && space.user != null && !space?.requested"></td>
+                  </ng-container>
                   <td *ngIf="role == 'ADMIN'">
-                    <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                    <a [routerLink]="['/spaces/'+id+'/user/'+(space.user?.id != null ? space.user?.id : 0)+'/update-space', space.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
@@ -40,12 +49,21 @@
                 </tr>
                 <tr class="table-warning" *ngIf="space.type == 'BICYCLE'">
                   <th scope="row">{{ space.id }}</th>
-                  <td>{{ space.user }}</td>
+                  <td *ngIf="space.user?.id == userId"><b>{{ space.user?.name }}</b></td>
+                  <td *ngIf="space.user?.id != userId">{{ space.user?.name }}</td>
                   <td>Vélo</td>
-                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <ng-container *ngIf="role == 'USER'" >
+                    <td *ngIf="space?.requested"><b>Votre demande est en cours de traitement</b></td>
+                    <td *ngIf="space.user == null && !space?.requested">
+                      <app-modal-request [id]=space.id (onAddRequest)="onAddRequest($event)"></app-modal-request>
+                    </td>
+                    <td *ngIf="space.user?.id == userId && !space?.requested">
+                      <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+                    </td>
+                    <td *ngIf="space.user?.id != userId && space.user != null && !space?.requested"></td>
+                  </ng-container>
                   <td *ngIf="role == 'ADMIN'">
-                    <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                    <a [routerLink]="['/spaces/'+id+'/user/'+(space.user?.id != null ? space.user?.id : 0)+'/update-space', space.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
@@ -55,12 +73,21 @@
                 </tr>
                 <tr class="table-success" *ngIf="space.type == 'PLANE'">
                   <th scope="row">{{ space.id }}</th>
-                  <td>{{ space.user }}</td>
+                  <td *ngIf="space.user?.id == userId"><b>{{ space.user?.name }}</b></td>
+                  <td *ngIf="space.user?.id != userId">{{ space.user?.name }}</td>
                   <td>Avion</td>
-                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <ng-container *ngIf="role == 'USER'" >
+                    <td *ngIf="space?.requested"><b>Votre demande est en cours de traitement</b></td>
+                    <td *ngIf="space.user == null && !space?.requested">
+                      <app-modal-request [id]=space.id (onAddRequest)="onAddRequest($event)"></app-modal-request>
+                    </td>
+                    <td *ngIf="space.user?.id == userId && !space?.requested">
+                      <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+                    </td>
+                    <td *ngIf="space.user?.id != userId && space.user != null && !space?.requested"></td>
+                  </ng-container>
                   <td *ngIf="role == 'ADMIN'">
-                    <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                    <a [routerLink]="['/spaces/'+id+'/user/'+(space.user?.id != null ? space.user?.id : 0)+'/update-space', space.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
@@ -70,12 +97,21 @@
                 </tr>
                 <tr class="table-danger" *ngIf="space.type == 'CAR_DISABLED'">
                   <th scope="row">{{ space.id }}</th>
-                  <td>{{ space.user }}</td>
+                  <td *ngIf="space.user?.id == userId"><b>{{ space.user?.name }}</b></td>
+                  <td *ngIf="space.user?.id != userId">{{ space.user?.name }}</td>
                   <td>Handicapé</td>
-                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <ng-container *ngIf="role == 'USER'" >
+                    <td *ngIf="space?.requested"><b>Votre demande est en cours de traitement</b></td>
+                    <td *ngIf="space.user == null && !space?.requested">
+                      <app-modal-request [id]=space.id (onAddRequest)="onAddRequest($event)"></app-modal-request>
+                    </td>
+                    <td *ngIf="space.user?.id == userId && !space?.requested">
+                      <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+                    </td>
+                    <td *ngIf="space.user?.id != userId && space.user != null && !space?.requested"></td>
+                  </ng-container>
                   <td *ngIf="role == 'ADMIN'">
-                    <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                    <a [routerLink]="['/spaces/'+id+'/user/'+(space.user?.id != null ? space.user?.id : 0)+'/update-space', space.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>
@@ -85,12 +121,21 @@
                 </tr>
                 <tr class="table" *ngIf="space.type == null">
                   <th scope="row">{{ space.id }}</th>
-                  <td>{{ space.user }}</td>
+                  <td *ngIf="space.user?.id == userId"><b>{{ space.user?.name }}</b></td>
+                  <td *ngIf="space.user?.id != userId">{{ space.user?.name }}</td>
                   <td></td>
-                  <td *ngIf="space.user == null && role == 'USER'"><app-modal-request></app-modal-request></td>
-                  <td *ngIf="space.user != null && role == 'USER'"><app-modal-release></app-modal-release></td>
+                  <ng-container *ngIf="role == 'USER'" >
+                    <td *ngIf="space?.requested"><b>Votre demande est en cours de traitement</b></td>
+                    <td *ngIf="space.user == null && !space?.requested">
+                      <app-modal-request [id]=space.id (onAddRequest)="onAddRequest($event)"></app-modal-request>
+                    </td>
+                    <td *ngIf="space.user?.id == userId && !space?.requested">
+                      <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+                    </td>
+                    <td *ngIf="space.user?.id != userId && space.user != null && !space?.requested"></td>
+                  </ng-container>
                   <td *ngIf="role == 'ADMIN'">
-                    <a [routerLink]="['/update-space']" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
+                    <a [routerLink]="['/spaces/'+id+'/user/'+(space.user?.id != null ? space.user?.id : 0)+'/update-space', space.id]" [routerLinkActive]="['router-link-active']" style="text-decoration: none;">
                       <button type="button" class="btn btn-sm btn-warning" style="color:white">
                         <i class="fas fa-edit"></i>
                       </button>

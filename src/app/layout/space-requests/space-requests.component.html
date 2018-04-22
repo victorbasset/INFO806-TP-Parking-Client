@@ -10,6 +10,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>Id place</th>
                   <th>Client</th>
                   <th>Date</th>
                   <th>Type</th>
@@ -17,46 +18,52 @@
                 </tr>
               </thead>
               <tbody>
-              <tr class="table-success">
-                <th scope="row">1</th>
-                <td>Jacob</td>
-                <td>11 janvier 2018 à 18h29</td>
-                <td>Avion</td>
-                <td>
-                  <app-modal-accept></app-modal-accept>
-                  <app-modal-refuse></app-modal-refuse>
-                </td>
-              </tr>
-              <tr class="table-info">
-                <th scope="row">2</th>
-                <td>Larry</td>
-                <td>11 janvier 2018 à 18h29</td>
-                <td>Voiture</td>
-                <td>
-                  <app-modal-accept></app-modal-accept>
-                  <app-modal-refuse></app-modal-refuse>
-                </td>
-              </tr>
-              <tr class="table-warning">
-                <th scope="row">3</th>
-                <td>Georges</td>
-                <td>11 janvier 2018 à 18h29</td>
-                <td>Vélo</td>
-                <td>
-                  <app-modal-accept></app-modal-accept>
-                  <app-modal-refuse></app-modal-refuse>
-                </td>
-              </tr>
-              <tr class="table-danger">
-                <th scope="row">4</th>
-                <td>Larry</td>
-                <td>11 janvier 2018 à 18h29</td>
-                <td>Handicapé</td>
-                <td>
-                  <app-modal-accept></app-modal-accept>
-                  <app-modal-refuse></app-modal-refuse>
-                </td>
-              </tr>
+                <ng-container *ngFor="let request of requests">
+                  <tr class="table-info" *ngIf="request?.space?.type === 'CAR'">
+                    <th scope="row">{{request?.id}}</th>
+                    <td>{{request?.space?.id}}</td>
+                    <td>{{request?.user?.name}}</td>
+                    <td>{{request?.creationDate}}</td>
+                    <td>Voiture</td>
+                    <td>
+                      <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
+                      <app-modal-refuse [id]=request?.id (onRejected)="onRejected($event)"></app-modal-refuse>
+                    </td>
+                  </tr>
+                  <tr class="table-success" *ngIf="request?.space?.type === 'PLANE'">
+                    <th scope="row">{{request?.id}}</th>
+                    <td>{{request?.space?.id}}</td>
+                    <td>{{request?.user?.name}}</td>
+                    <td>{{request?.creationDate}}</td>
+                    <td>Avion</td>
+                    <td>
+                      <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
+                      <app-modal-refuse [id]=request?.id (onRejected)="onRejected($event)"></app-modal-refuse>
+                    </td>
+                  </tr>
+                  <tr class="table-warning" *ngIf="request?.space?.type === 'BICYCLE'">
+                    <th scope="row">{{request?.id}}</th>
+                    <td>{{request?.space?.id}}</td>
+                    <td>{{request?.user?.name}}</td>
+                    <td>{{request?.creationDate}}</td>
+                    <td>Vélo</td>
+                    <td>
+                      <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
+                      <app-modal-refuse [id]=request?.id (onRejected)="onRejected($event)"></app-modal-refuse>
+                    </td>
+                  </tr>
+                  <tr class="table-danger" *ngIf="request?.space?.type === 'CAR_DISABLED'">
+                    <th scope="row">{{request?.id}}</th>
+                    <td>{{request?.space?.id}}</td>
+                    <td>{{request?.user?.name}}</td>
+                    <td>{{request?.creationDate}}</td>
+                    <td>Handicapé</td>
+                    <td>
+                      <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
+                      <app-modal-refuse [id]=request?.id (onRejected)="onRejected($event)"></app-modal-refuse>
+                    </td>
+                  </tr>
+                </ng-container>
               </tbody>
             </table>
           </div>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ServiceRestSpace } from '../../../../../service/service.rest.space';
 
 @Component({
     selector: 'app-modal-release',
@@ -7,8 +8,12 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./modal-release.component.scss']
 })
 export class ModalReleaseComponent {
+
+  @Input() id:number;
+  @Input() type:string;
+  @Output() onReleaseSpace = new EventEmitter<number>();
     closeResult: string;
-    constructor(private modalService: NgbModal) { }
+    constructor(private modalService: NgbModal, private serviceRestSpace: ServiceRestSpace) { }
 
     open(content) {
         this.modalService.open(content).result.then((result) => {
@@ -26,5 +31,14 @@ export class ModalReleaseComponent {
         } else {
             return  `with: ${reason}`;
         }
+    }
+
+    private releaseSpace(){
+      this.serviceRestSpace.putSpace({
+        "id": this.id,
+        "type": this.type,
+        "userId": null
+      }).subscribe();
+      this.onReleaseSpace.emit(this.id);
     }
 }

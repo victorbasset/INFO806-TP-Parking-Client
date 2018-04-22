@@ -31,11 +31,4 @@ export class ServiceRestParking {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     return this.http.put(environment.apiAdminUrl + 'parkings', parking,{headers: token});
   }
-
-  public findByParking(id) {
-    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
-    return this.http.get(environment.apiUrl + 'parking/' + id + '/spaces',{headers: token});
-  }
-
-
 }

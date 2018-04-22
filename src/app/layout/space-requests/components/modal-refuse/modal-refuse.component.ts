@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ServiceRestSpaceRequest } from '../../../../../service/service.rest.space-request';
 
 @Component({
     selector: 'app-modal-refuse',
@@ -7,8 +8,12 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./modal-refuse.component.scss']
 })
 export class ModalRefuseComponent {
+
+    @Input() id:number;
+    @Output() onRejected = new EventEmitter<number>();
+
     closeResult: string;
-    constructor(private modalService: NgbModal) { }
+    constructor(private modalService: NgbModal,private serviceRestSpaceRequest: ServiceRestSpaceRequest) { }
 
     open(content) {
         this.modalService.open(content).result.then((result) => {
@@ -26,5 +31,10 @@ export class ModalRefuseComponent {
         } else {
             return  `with: ${reason}`;
         }
+    }
+
+    private rejectRequest(){
+      this.serviceRestSpaceRequest.rejectRequest(this.id).subscribe();
+      this.onRejected.emit(this.id);
     }
 }

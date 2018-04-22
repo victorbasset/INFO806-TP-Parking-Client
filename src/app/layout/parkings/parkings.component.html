@@ -23,6 +23,7 @@
                             <th>Nom</th>
                             <th>Adresse</th>
                             <th>Nb. de places disponibles</th>
+                            <th>Nb. de places réservées</th>
                             <th *ngIf="role == 'USER'" >Voir les places disponibles</th>
                             <th *ngIf="role == 'ADMIN'" >Commande</th>
                             <th *ngIf="role == 'ADMIN'" >Liste des demandes</th>
@@ -33,10 +34,11 @@
                             <th scope="row">{{ parking.id }}</th>
                             <td>{{ parking.name }}</td>
                             <td>{{ parking.address }}</td>
-                            <td>1</td>
+                            <td>{{ parking?.nb_free_spaces }}</td>
+                            <td>{{ parking?.nb_reserved_spaces }}</td>
                             <td>
                               <a [routerLink]="['/spaces', parking.id]" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
-                                <button type="button" class="btn btn-sm btn-info">
+                                <button type="button" class="btn btn-sm btn-info" style="width: 40%">
                                       <i class="fas fa-eye"></i>
                                 </button>
                               </a>
@@ -48,9 +50,9 @@
                               <app-modal *ngIf="role == 'ADMIN'" [id]=parking.id (onDeleted)="onDeleted($event)" ></app-modal>
                             </td>
                             <td *ngIf="role == 'ADMIN'">
-                              <a [routerLink]="['/space-requests']" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
+                              <a [routerLink]="['/space-requests', parking.id]" [routerLinkActive]="['router-link-active']" style="color:white;text-decoration: none;">
                                 <button type="button" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-list"></i> <b>5</b> demandes à traiter
+                                    <i class="fas fa-list"></i> <b>{{ parking?.nb_requests }}</b> demandes à traiter
                                 </button>
                               </a>
                             </td>

@@ -18,6 +18,16 @@ export class ServiceRestSpace {
     return this.http.get(environment.apiUrl + 'spaces/' + id,{headers: token});
   }
 
+  public findByParking(id) {
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'parking/' + id + '/spaces',{headers: token});
+  }
+
+  public putSpace(space) {
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.put(environment.apiUrl + 'spaces', space,{headers: token});
+  }
+
   public addSpace(space) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     return this.http.post(environment.apiAdminUrl + 'spaces', space,{headers: token});
@@ -32,5 +42,4 @@ export class ServiceRestSpace {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     return this.http.delete(environment.apiAdminUrl + 'spaces/' + id,{headers: token})
   }
-
 }

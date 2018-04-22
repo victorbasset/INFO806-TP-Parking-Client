@@ -12,6 +12,11 @@ export class ServiceRestSpaceRequest {
     return this.http.get(environment.apiAdminUrl + 'space-requests',{headers: token});
   }
 
+  public requestByParking(id) {
+    let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this.http.get(environment.apiUrl + 'parking/' + id + '/space-requests',{headers: token});
+  }
+
   public addRequest(spaceRequest) {
     let token = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     return this.http.post(environment.apiUrl + 'space-requests',spaceRequest,{headers: token});
