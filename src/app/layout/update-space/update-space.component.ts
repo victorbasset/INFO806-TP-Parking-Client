@@ -23,13 +23,14 @@ export class UpdateSpaceComponent implements OnInit {
 
 
   onSubmit(){
-
-    this.serviceRestSpace.putSpace({
-      "id": this.id_space,
-      "type": this.type,
-      "userId": this.free ? 0 : this.id_user
-    }).subscribe(
-      success => this.router.navigate(["/spaces", this.id_parking])
-    );
+    if(this.type != undefined) {
+      this.serviceRestSpace.putSpace({
+        "id": this.id_space,
+        "type": this.type,
+        "userId": this.free ? 0 : this.id_user
+      }).subscribe(
+        success => this.router.navigate(["/spaces", this.id_parking])
+      );
+    }
   }
 }

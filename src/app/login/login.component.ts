@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {}
 
-    onLoggedin() {
+    onLogin() {
       this.serviceRestOauth.login(this.username, this.password).then(
         ({result}) => {
           localStorage.setItem('username', this.username);

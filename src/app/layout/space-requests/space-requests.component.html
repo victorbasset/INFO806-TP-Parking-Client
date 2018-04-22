@@ -23,7 +23,7 @@
                     <th scope="row">{{request?.id}}</th>
                     <td>{{request?.space?.id}}</td>
                     <td>{{request?.user?.name}}</td>
-                    <td>{{request?.creationDate}}</td>
+                    <td>{{request?.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</td>
                     <td>Voiture</td>
                     <td>
                       <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
@@ -34,7 +34,7 @@
                     <th scope="row">{{request?.id}}</th>
                     <td>{{request?.space?.id}}</td>
                     <td>{{request?.user?.name}}</td>
-                    <td>{{request?.creationDate}}</td>
+                    <td>{{request?.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</td>
                     <td>Avion</td>
                     <td>
                       <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
@@ -45,7 +45,7 @@
                     <th scope="row">{{request?.id}}</th>
                     <td>{{request?.space?.id}}</td>
                     <td>{{request?.user?.name}}</td>
-                    <td>{{request?.creationDate}}</td>
+                    <td>{{request?.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</td>
                     <td>Vélo</td>
                     <td>
                       <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>
@@ -56,7 +56,7 @@
                     <th scope="row">{{request?.id}}</th>
                     <td>{{request?.space?.id}}</td>
                     <td>{{request?.user?.name}}</td>
-                    <td>{{request?.creationDate}}</td>
+                    <td>{{request?.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</td>
                     <td>Handicapé</td>
                     <td>
                       <app-modal-accept [id]=request?.id (onAccepted)="onAccepted($event)"></app-modal-accept>

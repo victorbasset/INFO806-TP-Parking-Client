@@ -27,22 +27,22 @@
     <div class="row">
         <div class="col-xl-3 col-lg-6">
           <a href="Javascript:void(0)" [routerLink]="['/parkings']">
-            <app-stat [bgClass]="'primary'" [icon]="'fa-car'" [count]="'27'" [label]="'Voiture'" ></app-stat>
+            <app-stat [bgClass]="'primary'" [icon]="'fa-car'" [count]="nb_car" [label]="'Voiture'" ></app-stat>
           </a>
         </div>
         <div class="col-xl-3 col-lg-6">
           <a href="Javascript:void(0)" [routerLink]="['/parkings']">
-            <app-stat [bgClass]="'warning'" [icon]="'fa-bicycle'" [count]="'27'" [label]="'Vélo'" ></app-stat>
+            <app-stat [bgClass]="'warning'" [icon]="'fa-bicycle'" [count]="nb_bicycle" [label]="'Vélo'" ></app-stat>
           </a>
         </div>
         <div class="col-xl-3 col-lg-6">
           <a href="Javascript:void(0)" [routerLink]="['/parkings']">
-            <app-stat [bgClass]="'success'" [icon]="'fa-plane'" [count]="'27'" [label]="'Avion'" ></app-stat>
+            <app-stat [bgClass]="'success'" [icon]="'fa-plane'" [count]="nb_plane" [label]="'Avion'" ></app-stat>
           </a>
         </div>
         <div class="col-xl-3 col-lg-6">
           <a href="Javascript:void(0)" [routerLink]="['/parkings']">
-            <app-stat [bgClass]="'danger'" [icon]="'fab fa-accessible-icon'" [count]="'27'" [label]="'Handicapé'"></app-stat>
+            <app-stat [bgClass]="'danger'" [icon]="'fab fa-accessible-icon'" [count]="nb_disabled" [label]="'Handicapé'"></app-stat>
           </a>
         </div>
     </div>

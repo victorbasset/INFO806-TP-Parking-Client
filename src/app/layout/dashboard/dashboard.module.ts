@@ -4,6 +4,8 @@ import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { ServiceRestSpace } from '../../../service/service.rest.space';
+
 import {
     TimelineComponent,
     NotificationComponent,
@@ -24,6 +26,7 @@ import { StatModule } from '../../shared';
         TimelineComponent,
         NotificationComponent,
         ChatComponent
-    ]
+    ],
+    providers: [ServiceRestSpace]
 })
 export class DashboardModule {}
