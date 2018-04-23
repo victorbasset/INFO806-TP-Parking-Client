@@ -1,0 +1,61 @@
+<div [@routerTransition]>
+  <div class="row">
+    <div class="col col-xl-12 col-lg-12">
+      <div class="card mb-3">
+        <div class="card-header">Mes places</div>
+        <table class="card-body table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Propriétaire</th>
+            <th>Type</th>
+          </tr>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let space of spaces">
+          <ng-container *ngIf="space.user?.id == userId">
+            <tr class="table-info" *ngIf="space.type == 'CAR'">
+              <th scope="row">{{ space.id }}</th>
+              <td><b>{{ space.user?.name }}</b></td>
+              <td>Voiture</td>
+              <td *ngIf="space.user?.id == userId && !space?.requested">
+                <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+              </td>
+            </tr>
+            <tr class="table-warning" *ngIf="space.type == 'BICYCLE'">
+              <th scope="row">{{ space.id }}</th>
+              <td><b>{{ space.user?.name }}</b></td>
+              <td>Vélo</td>
+              <td *ngIf="space.user?.id == userId && !space?.requested">
+                <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+              </td>
+            </tr>
+            <tr class="table-success" *ngIf="space.type == 'PLANE'">
+              <th scope="row">{{ space.id }}</th>
+              <td><b>{{ space.user?.name }}</b></td>
+              <td>Avion</td>
+              <td *ngIf="space.user?.id == userId && !space?.requested">
+                <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+              </td>
+            </tr>
+            <tr class="table-danger" *ngIf="space.type == 'CAR_DISABLED'">
+              <th scope="row">{{ space.id }}</th>
+              <td><b>{{ space.user?.name }}</b></td>
+              <td>Handicapé</td>
+            </tr>
+            <tr class="table" *ngIf="space.type == null">
+              <th scope="row">{{ space.id }}</th>
+              <td><b>{{ space.user?.name }}</b></td>
+              <td></td>
+              <td *ngIf="space.user?.id == userId && !space?.requested">
+                <app-modal-release [id]=space.id [type]=space.type (onReleaseSpace)="onReleaseSpace($event)"></app-modal-release>
+              </td>
+            </tr>
+          </ng-container>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ const routes: Routes = [
             { path: 'update-parking/:id', loadChildren: './update-parking/update-parking.module#UpdateParkingModule'},
             { path: 'spaces/:id-parking/user/:id-user/update-space/:id-space', loadChildren: './update-space/update-space.module#UpdateSpaceModule' },
             { path: 'spaces/:id', loadChildren: './spaces/spaces.module#SpacesModule' },
+            { path: 'myspaces', loadChildren: './myspaces/myspaces.module#MyspacesModule' }
         ]
     }
 ];

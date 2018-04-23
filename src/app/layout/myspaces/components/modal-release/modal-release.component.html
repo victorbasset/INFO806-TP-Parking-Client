@@ -1,0 +1,17 @@
+<!-- Large modal-release -->
+<button type="button" (click)="open(content)" class="btn btn-secondary">Libérer la place</button>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Libérer une place</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Voulez-vous vraiment libérer la place ?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="releaseSpace();c('Close click')">Oui</button>
+      <button type="button" class="btn btn-danger" (click)="c('Close click')">Non</button>
+    </div>
+</ng-template>
