@@ -6,7 +6,7 @@
         <a [routerLink]="['/parkings']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Parkings' | translate }}
         </a>
-        <a [routerLink]="['/myspaces']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a *ngIf="role == 'USER'" [routerLink]="['/myspaces']" [routerLinkActive]="['router-link-active']" class="list-group-item">
           <i class="fa fa-fw far fa-square"></i>&nbsp;{{ 'Mes places' | translate }}
         </a>
     </div>
