@@ -9,6 +9,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorRefreshToken } from '../interceptor/interceptor.refresh.token';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -19,6 +21,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
     imports: [
+
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -33,7 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [AuthGuard,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorRefreshToken, multi: true },],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

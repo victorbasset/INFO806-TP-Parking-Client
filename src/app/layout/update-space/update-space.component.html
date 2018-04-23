@@ -4,21 +4,27 @@
         <i class="fa fa-table"></i> <a href="Javascript:void(0)" [routerLink]="['/parkings']">Parkings</a>
       </li>
       <li class="breadcrumb-item">
-        <i class="far fa-square"></i> <a href="Javascript:void(0)" [routerLink]="['/spaces']">Places</a>
+        <i class="far fa-square"></i> <a href="Javascript:void(0)" [routerLink]="['/spaces', id_parking]">Places</a>
       </li>
       <li class="breadcrumb-item active"><i class="fa fa-edit"></i> Modifier une place</li>
     </ol>
     <div class="col-lg-6">
 
-      <form role="form">
+      <form role="form" (ngSubmit)="onSubmit()">
+        <fieldset class="form-group">
+          <label >
+            <input type="checkbox" [(ngModel)]="free" name="free" title="free" value="newsletter">
+            Libérer la place
+          </label>
+        </fieldset>
         <fieldset class="form-group">
           <label>Type</label>
-          <select class="form-control">
-            <option value="" disabled selected hidden>Sélectionner un type</option>
-            <option>Voiture</option>
-            <option>Avion</option>
-            <option>Vélo</option>
-            <option>Handicapé</option>
+          <select [(ngModel)]="type" class="form-control" name="type" title="type">
+            <option value="" disabled selected>Sélectionner un type</option>
+            <option value="CAR">Voiture</option>
+            <option value="PLANE">Avion</option>
+            <option value="BICYCLE">Vélo</option>
+            <option value="CAR_DISABLED">Handicapé</option>
           </select>
         </fieldset>
         <button type="submit" class="btn btn-warning">Modifier</button>

@@ -6,16 +6,19 @@
             <form role="form">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Identifiant">
+                        <input type="text" [(ngModel)]="username" name="username" class="form-control input-underline input-lg" placeholder="Identifiant">
                     </div>
+                    <div *ngIf="error_username">Le nom d'utilisateur doit contenir au moins 4 caractères</div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Mot de passe">
+                        <input type="password" [(ngModel)]="password" name="password" class="form-control input-underline input-lg" placeholder="Mot de passe">
                     </div>
+                    <div *ngIf="error_password">Le mot de passe doit contenir au moins 6 caractères</div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Répéter le mot de passe">
+                        <input type="password" [(ngModel)]="repeat_password" name="repeat_password" class="form-control input-underline input-lg" placeholder="Répéter le mot de passe">
                     </div>
+                    <div *ngIf="error_repeat_password">Les mots de passe doivent être identiques</div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> S'inscrire </a>&nbsp;
+                <a class="btn rounded-btn" (click)="onSignup()"> S'inscrire </a>&nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/login']"> Se connecter </a>
             </form>
         </div>
