@@ -11,6 +11,7 @@ export class SidebarComponent {
     isActive: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
+    public role:string = localStorage.getItem('role');
 
     constructor(private translate: TranslateService, public router: Router) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);

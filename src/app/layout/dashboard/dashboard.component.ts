@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ServiceRestSpace } from '../../../service/service.rest.space';
 
 @Component({
     selector: 'app-dashboard',
@@ -8,47 +9,42 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
-    public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    public nb_car:number=0;
+    public nb_bicycle:number=0;
+    public nb_plane:number=0;
+    public nb_disabled:number=0;
 
-    constructor() {
-        this.sliders.push(
-            {
-                imagePath: 'assets/images/car.png',
-                label: 'Réserver votre place de parking !',
-                text: 'Voiture'
-            },
-            {
-                imagePath: 'assets/images/plane.jpg',
-                label: 'Réserver votre place de parking !',
-                text: 'Avion'
-            },
-        );
-
-        this.alerts.push(
-            {
-                id: 1,
-                type: 'success',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
-            },
-            {
-                id: 2,
-                type: 'warning',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
-            }
-        );
+  constructor(private serviceRestSpace: ServiceRestSpace) {
+      this.sliders.push(
+          {
+              imagePath: 'assets/images/car.png',
+              label: 'Réserver votre place de parking !',
+              text: 'Voiture'
+          },
+          {
+              imagePath: 'assets/images/plane.jpg',
+              label: 'Réserver votre place de parking !',
+              text: 'Avion'
+          },
+      );
     }
 
-    ngOnInit() {}
-
-    public closeAlert(alert: any) {
-        const index: number = this.alerts.indexOf(alert);
-        this.alerts.splice(index, 1);
+    ngOnInit() {
+      this.serviceRestSpace.allSpaces().subscribe( spaces => {
+        Object.values(spaces).forEach( space => {
+          if(space.user == null) {
+            if (space.type == "CAR") {
+              this.nb_car++;
+            } else if (space.type == "PLANE") {
+              this.nb_plane++;
+            } else if (space.type == "BICYCLE") {
+              this.nb_bicycle++;
+            } else if (space.type == "CAR_DISABLED") {
+              this.nb_disabled++;
+            }
+          }
+        })
+      })
     }
 }

@@ -2,15 +2,15 @@
     <app-page-header [heading]="'Modifier un parking'" [icon]="'fa-edit'"></app-page-header>
     <div class="col-lg-6">
 
-      <form role="form">
+      <form role="form" (ngSubmit)="onSubmit()">
         <fieldset class="form-group">
           <label>Nom</label>
-          <input class="form-control" placeholder="Nom">
+          <input [(ngModel)]="this.name" name="name" class="form-control" title="" value="{{ this.parking?.name }}">
         </fieldset>
 
         <fieldset class="form-group">
           <label>Adresse</label>
-          <input class="form-control" placeholder="Adresse">
+          <input [(ngModel)]="this.address" name="address" class="form-control" title="" value="{{ this.parking?.address }}">
         </fieldset>
 
         <button type="submit" class="btn btn-warning">Modifier</button>

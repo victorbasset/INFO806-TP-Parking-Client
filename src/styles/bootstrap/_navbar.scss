@@ -163,8 +163,8 @@
           }
 
           .dropdown-menu-right {
-            right: 0;
-            left: auto; // Reset the default from `.dropdown-menu`
+            right: 30px;
+            left: auto !important; // Reset the default from `.dropdown-menu`
           }
 
           .nav-link {

@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AddSpaceRoutingModule } from './add-space-routing.module';
 import { AddSpaceComponent } from './add-space.component';
 import { PageHeaderModule } from './../../shared';
+import { ServiceRestSpace } from '../../../service/service.rest.space';
+import { ServiceRestParking } from '../../../service/service.rest.parking';
 
 @NgModule({
-    imports: [CommonModule, AddSpaceRoutingModule, PageHeaderModule],
-    declarations: [AddSpaceComponent]
+    imports: [FormsModule, AddSpaceRoutingModule, PageHeaderModule],
+    declarations: [AddSpaceComponent],
+    providers: [ServiceRestSpace, ServiceRestParking]
 })
 export class AddSpaceModule {}

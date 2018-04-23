@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AddParkingRoutingModule } from './add-parking-routing.module';
 import { AddParkingComponent } from './add-parking.component';
 import { PageHeaderModule } from './../../shared';
+import { ServiceRestParking } from '../../../service/service.rest.parking';
 
 @NgModule({
-    imports: [CommonModule, AddParkingRoutingModule, PageHeaderModule],
-    declarations: [AddParkingComponent]
+    imports: [FormsModule, AddParkingRoutingModule, PageHeaderModule],
+    declarations: [AddParkingComponent],
+    providers: [ServiceRestParking]
 })
 export class AddParkingModule {}
